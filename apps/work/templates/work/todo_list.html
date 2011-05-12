@@ -1,0 +1,38 @@
+{% extends "work/base.html" %}
+{% load inlines markup comments %}
+{% block content %}
+<h1>Проект: <a href="{{ object.link }}" title="На страницу проекта {{object}}">{{ object }}</a></h1>
+
+	{% for object in object_list %}
+<DIV class="post" id="post-{{object.pk}}" style="padding-bottom: 40px;">
+  <DIV class="posthead">
+
+    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
+    <SMALL class="postauthor">Опубликовал {{ object.user }} </SMALL>
+
+    <P class="postdate">
+    <SMALL class="month">{{ object.pub_date|date:"M" }}</SMALL>
+    <SMALL class="day">{{ object.pub_date|date:"d" }}</SMALL>
+    </P>
+
+  </DIV>
+  <DIV class="postcontent">
+  {{ object.desc|render_inlines|markdown:mrk_conf }}
+  </DIV>
+  <DIV class="postinfo">
+    {% get_comment_count for object as count %}
+    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }}</A></LI>
+    {% if object.deadline %}
+    <LI>deadline: {{ object.deadline|date:"Y b d" }}</LI>
+    {% endif %}
+    <LI>статус: <font class="status{{ object.status }}">{{ object.get_status_display }}</font></LI>
+    <LI><font class="todo{{ object.type }}">{{ object.get_type_display }}</font></LI>
+    <LI>опубликовано {{ object.pub_date|timesince }} назад</LI>
+    <DIV class="clearer"></DIV>
+  </DIV>
+</DIV>
+<DIV class="clearer"></DIV>
+	{% endfor %}
+	
+	{% include "blog/pagination.html"%}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+{% load markup inlines blog_tags comments %}
+
+{% block jsblock %}
+{{ block.super }}
+{% include "threadedcomments/js-stuff.html"%}
+{% endblock %}
+
+{% block content %}
+<DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
+  <DIV class="posthead">
+
+    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
+    <SMALL class="postauthor">Опубликовал {{ object.user }} </SMALL>
+
+    <P class="postdate">
+    <SMALL class="month">{{ object.pub_date|date:"M" }}</SMALL>
+    <SMALL class="day">{{ object.pub_date|date:"d" }}</SMALL>
+    </P>
+
+  </DIV>
+  <DIV class="postcontent">
+  {{ object.text|render_inlines|markdown:"extra,wikilinks(base_url=/wiki/)"|rmcut }}
+  </DIV>
+  {% if user.is_superuser %}
+  <DIV STYLE="MARGIN:5PX;">
+  <A href="{{ object.link }}yvi/" onClick="if(confirm('Ты уверен?')){return true;}else{return false;}" title=""><img title="Запостить на yVision.kz" src="{{MEDIA_URL}}static_media/yvi.png" /></A>
+  </DIV>
+  {% endif %}
+  
+  <DIV class="postinfo" width=100%>
+    {% get_comment_count for object as count %}
+    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} комент.</A></LI>
+    <LI class="postcat">Filed under: <A href="{{ object.category.link }}" title="View all posts in {{ object.category }}" rel="category tag">{{ object.category }}</A></LI>
+    <DIV class="clearer"></DIV>
+  </DIV>
+</DIV>
+<DIV class="clearer"></DIV>
+
+{% include "threadedcomments/html-stuff.html"%}
+
+{% endblock %}

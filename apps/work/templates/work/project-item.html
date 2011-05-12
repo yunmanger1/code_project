@@ -1,0 +1,25 @@
+{% load inlines comments %}
+<DIV class="post" id="post-{{object.pk}}" style="padding-bottom: 40px;">
+  <DIV class="posthead">
+
+    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
+    <SMALL class="postauthor">Posted by {{ object.user }} </SMALL>
+
+    <P class="postdate">
+    <SMALL class="month">{{ object.pub_date|date:"M" }}</SMALL>
+    <SMALL class="day">{{ object.pub_date|date:"d" }}</SMALL>
+    </P>
+
+  </DIV>
+  <DIV class="postcontent">
+  {{ object.desc_ref|render_inlines }}
+  </DIV>
+  <DIV class="postinfo">
+    {% get_comment_count for object as count %}
+    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} комент.</A></LI>
+    <LI class="postcat">метки:
+      <A href="" title="View all posts in {{ object.category }}" rel="category tag">{{ object.tags }}</A></LI>
+    <DIV class="clearer"></DIV>
+  </DIV>
+</DIV>
+<DIV class="clearer"></DIV>

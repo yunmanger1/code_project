@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD profile="http://gmpg.org/xfn/11"><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META name="distribution" content="global">
+<META name="robots" content="follow, all">
+<META name="language" content="ru, kz, en, tr">
+<TITLE>Блог СДУшника {% block title %}{% endblock %}</TITLE>
+<!-- leave this for stats please -->
+<meta name="google-site-verification" content="sOzr_6LZTHZlt8Dwd418p9z5h7nEk12KiA4GFtUjhn0" />
+<LINK rel="shortcut icon" href="/media/static_media/styles/soulvision/images/favicon.ico" type="image/x-icon">
+{% block rss %}
+<LINK rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/">
+{% endblock %}
+<!-- 
+<LINK rel="alternate" type="text/xml" title="RSS .92" href="/feed/rss/">
+<LINK rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/feed/atom/">
+ -->
+<SCRIPT type="text/javascript" src="{{MEDIA_URL}}static_media/jscss/jquery.js"></SCRIPT>
+{% block jsblock %}
+{% endblock %}
+
+{% block style %}
+<STYLE type="text/css" media="screen">
+@import url('/media/static_media/styles/soulvision/style.css');
+</STYLE>
+{% endblock %}
+
+<style>
+	form.twitter-form input[type='text']{
+	    border:1px solid #280702;
+	    color:#C58556;
+	    font-size:10px;
+	    width:195px;
+	    background-color:#280702;
+	    padding-top:0px;
+	    padding-bottom:0px;
+	    padding-left:5px;
+   	}
+</style>
+</HEAD><BODY>
+
+<DIV id="headerwrap">
+  <DIV id="headerbg">
+    <DIV id="header">
+      <H1><A href="/">
+        {% block head_title %}Блог <a href="http://sdu.edu.kz/">СДУ</a>шника{% endblock %}</A></H1>
+        <p class="tagline">произносить "эсдэушника"</p>      
+      <DIV class="Menu">
+        
+        <DIV class="Menuright">
+          <UL>
+            <UL>
+              <LI><A href="/">Зеро</A></LI>
+              <LI class="page_item page-item-7"><A href="/images/gallery/page/1/" title="Галлереи">Фото</A></LI>
+              <LI class="page_item page-item-7"><A href="/p/" title="Мои проекты">Проекты</A></LI>
+              <!-- </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О мелемен</A></LI> -->
+            </UL>
+          </UL>
+        </DIV>
+      </DIV>
+      <DIV id="rssfeeds">
+        <P><A href="{% block feed_url %}/feed/{% endblock %}">фид</A></P>
+      </DIV>
+      {% block no_search %}
+      <DIV class="search">
+        <FORM id="searchform" method="get" action="/search/">
+          <INPUT type="text" value="ввести и нажать Enter для поиска" name="q" id="q" onfocus="if (this.value == &#39;ввести и нажать Enter для поиска&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;ввести и нажать Enter для поиска&#39;;}">
+        </FORM>
+      </DIV>
+      {% endblock %}
+    </DIV>
+  </DIV>
+</DIV>
+<DIV id="wrap">
+
+
+<DIV id="content">
+  <DIV class="postwrap">
+{% block content %}
+    {% for object in object_list %}
+    {% include "blog/post-item.html" %}
+    {% endfor %}
+{% endblock %}
+<DIV class="Nav">
+          </DIV>
+  </DIV>
+  {% block no_sidebar %}
+  <DIV id="sidebar">
+  {% block sidebar %}
+  {% block no_sidebar_top %}
+  <DIV id="sidebar-top">
+  {% block sidebar_top %}
+    <UL id="top-sidebarwidgets">
+            <H2>Про этот блог</H2>
+      <DIV class="sidebar-top-box">
+        
+        <DIV class="box-padding">
+          <P>Это мой первый блог. И здесь я буду писать всякую всячину. О том чем занимаюсь, над чем работаю,
+          где бываю, над чем размышляю, чем увлекаюсь ну и всякое такое.</P>
+          <DIV style="clear:both;"></DIV>
+        </DIV>
+      </DIV>
+          </UL>
+  {% endblock %}
+  </DIV>
+  {% endblock %}
+  <DIV style="clear:both;"></DIV>
+   {% block no_sidebar_left %}
+  <DIV id="sidebar-left">
+   {% block sidebar_left %}
+    <UL id="l_sidebarwidgets">
+        <DIV class="Categ">
+        <H2>Недавние посты</H2>
+        <UL>
+        	{% for post in recent_posts %}
+        	<LI><A href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</A></LI>
+        	{% endfor %}
+        </UL>
+        <BR>
+		{% if twitter_statuses %}
+        <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
+        <UL>
+        	{% if user.is_superuser %}
+        	<div>
+        	<form class="twitter-form" method="post" action="/s/twitter/post/">
+        	{% csrf_token %}
+        	<input type="text" name="tweet" value="сказать" onfocus="if (this.value == &#39;сказать&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;сказать&#39;;}"/>
+        	<input type="hidden" name="next" value="/"/> 
+        	</form>
+        	<br>
+        	</div>
+        	{% endif %}
+        	{% for s in twitter_statuses %}
+          	<LI><div style="font-size:12px;overflow:hidden;">{{ s.text }}</div><div style="color:#CFA97E;" class="tdate">{{ s.pub_date|timesince }}</div></LI>
+          	{% endfor %}
+        </UL>
+        {% endif %}
+        {% if recent_projectposts %}
+        <H2>Последнее в проектах</H2>
+        <UL>
+        	{% for post in recent_projectposts %}
+        	<LI><A href="{{ post.link }}" title="{{ post.title }}">{{ post.project }} &rarr; {{ post.title }}</A></LI>
+        	{% endfor %}
+        </UL>
+        <BR>
+        {% endif %}        
+      </DIV>
+    </UL>
+    {% endblock %}
+  </DIV>
+    {% endblock %}
+    {% block no_sidebar_right %}
+  <DIV id="sidebar-right">
+    {% block sidebar_right %}
+    <UL id="r_sidebarwidgets">
+        <H2>Разделы</H2>
+        <UL>
+        {% for cat in category_list %}
+          	<LI class="cat-item cat-item-{{cat.pk}}"><A href="{{ cat.link }}" title="View all posts filed under {{ cat.title }}">{{ cat.title }}</A></LI>
+		{% endfor %}
+        </UL>
+        <BR>
+        {% load blog_tags %}
+        {% get_post_archive as dates %}
+        <H2>Архив</H2>
+        <UL>
+        	{% for date in dates %}
+          	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>
+          	{% endfor %}
+        </UL>
+        <H2>Проекты</H2>
+        <UL>
+        	{% for object in project_list %}
+          	<LI><A href="{{ object.link }}" title="на страницу проекта {{ object }}">{{ object }}</A></LI>
+          	{% endfor %}
+        </UL>        
+        <H2>Ссылки</H2>
+        <UL>
+        	{% for link in public_links %}
+            <LI><A href="{{ link.url }}">{{ link.title }}</A></LI>
+            {% endfor %}
+        </UL>
+        <BR>
+        <H2>Имел дело с</H2>
+        <UL>
+            <LI><A href="http://vaadin.com/">Vaadin RIA Framework</A></LI>
+            <LI><A href="">JSP/Servlets</A>, <A href="">JPA</A>, <A href="">EJB3</A></LI>
+            <LI><A href="http://jboss.org/">JBoss AS</A></LI>
+            <LI><A href="http://djangoproject.com/">Django Web Framework</A></LI>
+            <LI><A href="">Qt</A>, <A href="">PyQt</A></LI>
+            <LI><A href="http://php.net/">php</A>, <A href="http://joomla.org/">Joomla CMS</A></LI>
+            <LI><A href="">python</A></LI>
+            <LI><A href="">fortran</A></LI>
+            <LI><A href="">Proteus</A>, <A href="">mpasm</A></LI>
+            <LI><A href="">Java ME</A>, <A href="">Java SE</A></LI>
+            <LI><A href="">gnu c++</A></LI>
+            <LI><A href="">javascript</A>, <A href="">jQuery</A></LI>
+            <LI><A href="">pascal</A>, <A href="">delphi</A></LI>
+        </UL>
+        <BR>
+ </UL>
+     {% endblock %}
+  </DIV>
+    {% endblock %}
+</DIV>
+{% endblock %}
+{% endblock %}
+</DIV>
+<!-- begin footer -->
+
+<DIV id="footer">  © 2010 <A href="">Soul vision theme</A>. 
+  <DIV></DIV></DIV></DIV></BODY></HTML>
