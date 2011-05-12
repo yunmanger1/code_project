@@ -5,7 +5,7 @@
 {% if not comment_list %}
 Комментариев пока нет!
 {% endif %}
-{% for comment in comment_list|fill_tree|annotate_tree %}
+{% for comment in comment_list %}
 
 {% ifchanged comment.parent_id %}{% else %}
     </li>
