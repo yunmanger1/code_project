@@ -1,7 +1,8 @@
 {% load threadedcommentstags uni_form %}
+{% with object as post %}
 <DIV id="comments">
 <h3>Comments on This Post:</h3>
-    {% get_free_threaded_comment_tree for object as tree %}
+    {% get_free_threaded_comment_tree for post as tree %}
     {% for comment in tree %}
         <div style="margin-left: {{ comment.depth }}em;" class="comment">
             <a href="{{ comment.website }}">{{ comment.name }}</a> said:<br/>
@@ -18,3 +19,4 @@
         </ul>
     </form>
 </DIV>
+{% endwith %}
