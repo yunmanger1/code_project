@@ -14,9 +14,6 @@ sys.path.append(PROJECT_ROOT)
 sys.path.append(rel('apps'))
 sys.path.insert(0, rel("libs"))
 
-DISTR_DIR='/home/german/distr'
-LIB_DIR='/home/german/work/libs'
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -75,7 +72,7 @@ BLOG_PAGESIZE = 5
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/german/work/media/code_project/'
+MEDIA_ROOT = rel('..','..','media','code_project')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
