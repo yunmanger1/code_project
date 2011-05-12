@@ -26,8 +26,6 @@
 <img style="float:left;" src="{{MEDIA_URL}}static_media/styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
 </div>
 <small><i>опубликовано {{ comment.submit_date|timesince }} назад</i></small><br>
-<a href="#" onClick="javascript:{doToggle({{comment.pk}});return false;}">Ответить</a><br>
-<div id="reply-{{comment.pk}}" class="hidden"></div>
 </div>
 
 {% for close in comment.close %}
@@ -44,13 +42,4 @@
 <input type="hidden" name="next" value="{{ object.link }}#comments" />
 <input type="submit" name="post" value="Запостить!" />
 </form>
-<div id="form_withparent" class="hidden">
-<form method="post" action="/comments/post/">
-{% csrf_token %}
-{% get_comment_form for object as form with 1 %}
-{{ form|as_uni_form }}
-<input type="hidden" name="next" value="{{ object.link }}" />
-<input type="submit" name="post" value="Ответить!" />
-</form>
-</div>
 </DIV>
