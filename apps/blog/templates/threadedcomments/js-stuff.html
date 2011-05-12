@@ -1,28 +1,38 @@
-<script>
-function doToggle(id){
-	var container = $('div#comments').find('div#reply-'+id);	
-	if (container.html()==''){
-		var form = $('div#form_withparent').find('form');
-		var clone = form.clone();
-		var l = clone.find('input[name=next]').val();
-		clone.find('input[name=next]').val(l+'#c'+id)
-		clone.find('input[name=parent]').val(id);
-		container.append(clone);
-	}
-	if (container.is(':visible')){container.hide();}
-	else{
-	container.show();
-	}	
+<script type="text/javascript">
+function show_reply_form(comment_id, url, person_name) {
+    var comment_reply = $('#' + comment_id);
+    var to_add = $( new Array(
+    '<div class="response"><p>Reply to ' + person_name + ':</p>',
+    '<form method="POST" action="' + url + '">',
+    '<ul>',  '{{ form.as_ul|oneline }}',
+    '<li><input type="submit" value="Submit Comment" /></li>',
+    '</ul>', '</form>', '</div>').join(''));
+    to_add.css("display", "none");
+    comment_reply.after(to_add);
+    to_add.slideDown(function() {
+        comment_reply.replaceWith(new Array('<a id="',
+        comment_id,'" href="javascript:hide_reply_form(\'',
+        comment_id, '\',\'', url, '\',\'', person_name,
+        '\')">Stop Replying</a>').join(''));
+    });
+}
+function hide_reply_form(comment_id, url, person_name) {
+    var comment_reply = $('#' + comment_id);
+    comment_reply.next().slideUp(function (){
+        comment_reply.next('.response').remove();
+        comment_reply.replaceWith(new Array('<a id="',
+        comment_id,'" href="javascript:show_reply_form(\'',
+        comment_id, '\',\'', url, '\',\'', person_name,
+        '\')">Reply</a>').join(''));
+    });
 }
 </script>
-<style>
-form label {display: block;}
-div#comments li {list-style:none;}
-div.comment {
-	padding:3px 0 3px 10px; 
-	display:block; 
-	background-image:url('/media/static_media/styles/soulvision/images/blockquote-bg.jpg');
-	background-repeat: repeat-y;
-}
-div.hidden, div#div_id_honeypot{display:none;}
+<style type="text/css">
+html { background-color: #336666; }
+a { color: #CC6633; font-size: 80%; }
+.comment { border-left: 2px solid #FFCC00; padding-left: 2px; 
+    margin-bottom: 4px; background-color: #993333; color: #FF9900; }
+#blogpost { background-color: #666633; padding-top: 4px; 
+    padding-bottom: 3px; }
+#blogpost h1 { background-color: #CDCDCD; margin: 4px 4px 4px 4px; }
 </style>
