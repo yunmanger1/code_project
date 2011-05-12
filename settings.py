@@ -10,6 +10,8 @@ def rel(*x):
 def rel_to(to, *x):
     return os.path.join(to, *x)
 
+sys.path.append(PROJECT_ROOT)
+sys.path.append(rel('apps'))
 sys.path.insert(0, rel("libs"))
 
 DISTR_DIR='/home/german/distr'
@@ -162,10 +164,6 @@ try:
     from local_settings import *
 except ImportError:
     pass
-
-sys.path.append(os.path.join(DISTR_DIR,"django-trunk"))
-sys.path.append(LIB_DIR)
-sys.path.append(rel('apps'))
 
 #search
 HAYSTACK_SITECONF = 'code_project.search_sites'
