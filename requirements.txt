@@ -12,3 +12,4 @@ markdown
 whoosh
 PIL
 mysql-python
+simplejson
