@@ -7,6 +7,6 @@
 	<H1>{{ flatpage.title }}</H1>
   </DIV>
   <DIV class="postcontent">
-	{{ flatpage.content|markdown }}
+	{{ flatpage.content|markdown:"extra" }}
   </DIV>
 {% endblock %}	
