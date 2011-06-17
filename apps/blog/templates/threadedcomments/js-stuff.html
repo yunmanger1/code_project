@@ -1,4 +1,4 @@
-<script>
+{% insert js %}
 function doToggle(id){
 	var container = $('div#comments').find('div#reply-'+id);	
 	if (container.html()==''){
@@ -14,15 +14,15 @@ function doToggle(id){
 	container.show();
 	}	
 }
-</script>
-<style>
+{% endinsert %}
+{% insert style %}
 form label {display: block;}
 div#comments li {list-style:none;}
 div.comment {
 	padding:3px 0 3px 10px; 
 	display:block; 
-	background-image:url('/media/static_media/styles/soulvision/images/blockquote-bg.jpg');
+	background-image:url('{{STATIC_URL}}styles/soulvision/images/blockquote-bg.jpg');
 	background-repeat: repeat-y;
 }
 div.hidden, div#div_id_honeypot{display:none;}
-</style>
+{% endinsert %}

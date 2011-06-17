@@ -2,9 +2,9 @@
 
 {% block content %}
 {% if success %}
-<h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился удачно!</h1>
+<h1>Кроспост на <img width="64" src="{{ STATIC_URL }}yvision_logo.jpg"/> завершился удачно!</h1>
 {% else %}
-<h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился неудачно :'(</h1>
+<h1>Кроспост на <img width="64" src="{{ STATIC_URL }}yvision_logo.jpg"/> завершился неудачно :'(</h1>
 {{ msg|linebreaks }}
 {% endif %}
 <br>

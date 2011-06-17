@@ -1,3 +1,4 @@
+{% insert_handler %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 <HEAD profile="http://gmpg.org/xfn/11"><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,8 +7,7 @@
 <META name="language" content="ru, kz, en, tr">
 <TITLE>Блог СДУшника {% block title %}{% endblock %}</TITLE>
 <!-- leave this for stats please -->
-<meta name="google-site-verification" content="sOzr_6LZTHZlt8Dwd418p9z5h7nEk12KiA4GFtUjhn0" />
-<LINK rel="shortcut icon" href="/media/static_media/styles/soulvision/images/favicon.ico" type="image/x-icon">
+<LINK rel="shortcut icon" href="{{STATIC_URL}}styles/soulvision/images/favicon.ico" type="image/x-icon">
 {% block rss %}
 <LINK rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/">
 {% endblock %}
@@ -15,13 +15,23 @@
 <LINK rel="alternate" type="text/xml" title="RSS .92" href="/feed/rss/">
 <LINK rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/feed/atom/">
  -->
-<SCRIPT type="text/javascript" src="{{MEDIA_URL}}static_media/jscss/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="{{STATIC_URL}}jscss/jquery.js"></SCRIPT>
+
+{% media_container media %}
 {% block jsblock %}
 {% endblock %}
+{% container head %}
+
+<script type='text/javascript'>
+{% container js %}
+$(document).ready(function(){
+{% container ready %}
+});
+</script>
 
 {% block style %}
 <STYLE type="text/css" media="screen">
-@import url('/media/static_media/styles/soulvision/style.css');
+@import url('{{STATIC_URL}}styles/soulvision/style.css');
 </STYLE>
 {% endblock %}
 
@@ -36,6 +46,7 @@
 	    padding-bottom:0px;
 	    padding-left:5px;
    	}
+{% container style %}
 </style>
 </HEAD><BODY>
 

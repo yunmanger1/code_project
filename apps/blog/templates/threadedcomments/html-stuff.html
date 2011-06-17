@@ -23,7 +23,7 @@
 <div id="c{{comment.pk}}" class="comment">
 <small>Автор: {{ comment.name }} </small><br>
 <div>
-<img style="float:left;" src="{{MEDIA_URL}}static_media/styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
+<img style="float:left;" src="{{STATIC_URL}}styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
 </div>
 <small><i>опубликовано {{ comment.submit_date|timesince }} назад</i></small><br>
 </div>

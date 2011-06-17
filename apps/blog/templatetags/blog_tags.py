@@ -6,18 +6,17 @@ from django.utils import text
 from BeautifulSoup import BeautifulSoup, Comment
 from blog.utils import postcut, removecut
 
-Post = models.get_model('blog','post')
+Post = models.get_model('blog', 'post')
 #from blog.models import Post
 
 register = template.Library()
-
 
 class PostArchive(template.Node):
     def __init__(self, var_name):
         self.var_name = var_name
 
     def render(self, context):
-        dates = Post.objects.published().dates('pub_date', 'month', order='DESC')
+        dates = Post.objects.published().dates('pub_date', 'month', order = 'DESC')
         if dates:
             context[self.var_name] = dates
         return ''
