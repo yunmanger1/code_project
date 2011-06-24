@@ -1,4 +1,39 @@
 {% load comments uni_form %}
+
+{% insert js %}
+function doToggle(id){
+	var container = $('div#comments').find('div#reply-'+id);	
+	if (container.html()==''){
+		var form = $('div#form_withparent').find('form');
+		var clone = form.clone();
+		var l = clone.find('input[name=next]').val();
+		clone.find('input[name=next]').val(l+'#c'+id)
+		clone.find('input[name=parent]').val(id);
+		container.append(clone);
+	}
+	if (container.is(':visible')){container.hide();}
+	else{
+	container.show();
+	}	
+}
+{% endinsert %}
+
+{% insert style %}
+form label {display: block;}
+div#comments li {list-style:none;}
+img.comment-icon {
+	margin-right: 5px;
+}
+div.comment {
+	margin: 5px 0 5px 0;
+	padding:3px 0 3px 10px; 
+	display:block; 
+	background-image:url('{{STATIC_URL}}styles/soulvision/images/blockquote-bg.jpg');
+	background-repeat: repeat-y;
+}
+div.hidden, div#div_id_honeypot{display:none;}
+{% endinsert %}
+
 <DIV id="comments">
 <h2>Комментарии</h2>
 {% get_comment_list for object as comment_list %}
@@ -23,7 +58,7 @@
 <div id="c{{comment.pk}}" class="comment">
 <small>Автор: {{ comment.name }} </small><br>
 <div>
-<img style="float:left;" src="{{STATIC_URL}}styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
+<img class="comment-icon" style="float:left;" src="{{STATIC_URL}}styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
 </div>
 <small><i>опубликовано {{ comment.submit_date|timesince }} назад</i></small><br>
 </div>

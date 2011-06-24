@@ -13,3 +13,4 @@ whoosh
 PIL
 mysql-python
 simplejson
+django-insert-above

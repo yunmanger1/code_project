@@ -150,7 +150,10 @@ INSTALLED_APPS = (
     'work',
     'etcs',
     'insert_above',
+    'helpdesk',
 )
+
+#LOGIN_URL = '/helpdesk/login/'
 
 try:
     from local_settings import *

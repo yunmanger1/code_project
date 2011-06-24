@@ -68,7 +68,7 @@ $(document).ready(function(){
         </DIV>
       </DIV>
       <DIV id="rssfeeds">
-        <P><A href="{% block feed_url %}/feed/{% endblock %}">фид</A></P>
+        <P><A title="{% block feed_title %}Все записи{% endblock %}" href="{% block feed_url %}/feed/{% endblock %}">RSS канал</A></P>
       </DIV>
       {% block no_search %}
       <DIV class="search">
