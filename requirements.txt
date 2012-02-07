@@ -14,4 +14,3 @@ PIL
 mysql-python
 simplejson
 django-insert-above
-django-disqus
