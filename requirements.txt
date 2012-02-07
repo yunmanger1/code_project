@@ -2,7 +2,7 @@ Django==1.3
 django-tagging
 south
 #django-basic-apps
-django-threadedcomments
+#django-threadedcomments
 #django-backup
 django-photologue
 django-haystack
@@ -14,3 +14,4 @@ PIL
 mysql-python
 simplejson
 django-insert-above
+django-disqus

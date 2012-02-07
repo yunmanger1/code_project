@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import url, include, patterns
+from django.conf.urls.defaults import include, patterns
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -20,7 +20,7 @@ info_dict = {
 
 sitemaps = {
     'flatpages': FlatPageSitemap,
-    'blog': GenericSitemap(info_dict, priority = 0.6),
+    'blog': GenericSitemap(info_dict, priority=0.6),
 }
 
 
@@ -29,11 +29,10 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^images/', include('photologue.urls')),
     (r'^search/', include('haystack.urls')),
-#    (r'helpdesk/', include('helpdesk.urls')),
 #    (r'^p/', include('work.urls')),
     (r'^s/', include('common.urls')),
 #    (r'^comments/', include('threadedcomments.urls')),
-    (r'^comments/', include('django.contrib.comments.urls')),
+    #(r'^comments/', include('django.contrib.comments.urls')),
     (r'^robots\.txt', 'robots.views.rules_list'),
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 )

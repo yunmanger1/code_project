@@ -1,0 +1,7 @@
+#!/bin/bash
+
+xpwd=$( readlink -f "$( dirname "$BASH_SOURCE" )" )
+
+
+. $xpwd/../../../bin/startwork
+. $xpwd/../../../envs/code_project/bin/activate

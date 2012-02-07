@@ -342,10 +342,7 @@ p.tagline {
 }
 .postcat {
 	background:url(images/icon-category.gif) no-repeat left top;
-	position: relative;
-	left: 10px;
-	width: 365px;
-	float: left;
+	margin-left: 10px;
 }
 .singlepostcat {
 	background:url(images/icon-category.gif) no-repeat left top;

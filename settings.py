@@ -4,8 +4,10 @@ import os
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
+
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
 
 def rel_to(to, *x):
     return os.path.join(to, *x)
@@ -53,6 +55,9 @@ YVI_USER_ID = None
 
 TWITTER_USER = ""
 TWITTER_PASSWORD = ""
+
+DISQUS_API_KEY = '9UnjE5z7hIPXPrdOgfse1SzlfXCzRnp2SPlJu9Cwb0koPOHZe4rrYNE7LbpCpY54'
+DISQUS_WEBSITE_SHORTNAME = 'bubenkz'
 
 #blog
 BLOG_PAGESIZE = 5
@@ -133,8 +138,8 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
 
-    'django.contrib.comments',
-    'threadedcomments',
+    #'django.contrib.comments',
+    #'threadedcomments',
     #'django-backup',
     'tagging',
     'south',
@@ -150,7 +155,7 @@ INSTALLED_APPS = (
     'work',
     'etcs',
     'insert_above',
-    'helpdesk',
+    'disqus',
 )
 
 #LOGIN_URL = '/helpdesk/login/'
@@ -165,4 +170,4 @@ HAYSTACK_SITECONF = 'code_project.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = rel_to(MEDIA_ROOT, "whoosh", "codeproject")
 
-COMMENTS_APP = 'threadedcomments'
+#COMMENTS_APP = 'threadedcomments'

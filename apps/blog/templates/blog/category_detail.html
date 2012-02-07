@@ -9,7 +9,7 @@
 
 
 {% block content %}
-<h1>Раздел {{ category.title }}</h1>
+<h1>Раздел {{ category }}</h1>
 	{% for object in object_list %}
 	{% include "blog/post-item.html" %}
 	{% endfor %}
