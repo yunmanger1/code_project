@@ -126,24 +126,34 @@ $(document).ready(function(){
         	{% endfor %}
         </UL>
         <BR>
-		{% if twitter_statuses and False %}
-        <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
-        <UL>
-        	{% if user.is_superuser %}
-        	<div>
-        	<form class="twitter-form" method="post" action="/s/twitter/post/">
-        	{% csrf_token %}
-        	<input type="text" name="tweet" value="сказать" onfocus="if (this.value == &#39;сказать&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;сказать&#39;;}"/>
-        	<input type="hidden" name="next" value="/"/> 
-        	</form>
-        	<br>
-        	</div>
-        	{% endif %}
-        	{% for s in twitter_statuses %}
-          	<LI><div style="font-size:12px;overflow:hidden;">{{ s.text }}</div><div style="color:#CFA97E;" class="tdate">{{ s.pub_date|timesince }}</div></LI>
-          	{% endfor %}
-        </UL>
-        {% endif %}
+        <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+        new TWTR.Widget({
+          version: 2,
+          type: 'profile',
+          rpp: 8,
+          interval: 30000,
+          width: 215,
+          height: 300,
+          theme: {
+            shell: {
+              background: '#3d2012',
+              color: '#ffffff'
+            },
+            tweets: {
+              background: '#ffffff',
+              color: '#333',
+              links: '#660000'
+            }
+          },
+          features: {
+            scrollbar: true,
+            loop: false,
+            live: false,
+            behavior: 'default'
+          }
+        }).render().setUser('yun_man_ger').start();
+        </script>
       </DIV>
         {% load blog_tags %}
         {% get_post_archive as dates %}

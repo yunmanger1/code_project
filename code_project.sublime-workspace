@@ -11,30 +11,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "apps/blog/templates/blog/post_detail.html",
-			"settings":
-			{
-				"buffer_size": 1562,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "apps/blog/templates/disqus/thread.html",
-			"settings":
-			{
-				"buffer_size": 854,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "settings.py",
-			"settings":
-			{
-				"buffer_size": 4177,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -68,6 +44,18 @@
 	},
 	"file_history":
 	[
+		"/home/german/work/sandbox/projects/code_project/settings.py",
+		"/home/german/work/sandbox/projects/code_project/apps/blog/templates/blog/post_detail.html",
+		"/home/german/work/sandbox/projects/code_project/urls.py",
+		"/home/german/work/sandbox/projects/code_project/apps/blog/templates/blog/post-item.html",
+		"/home/german/work/sandbox/projects/code_project/templates/base.html",
+		"/home/german/work/sandbox/projects/code_project/apps/blog/templates/disqus/thread.html",
+		"/home/german/work/sandbox/projects/code_project/apps/blog/templates/disqus/count.html",
+		"/home/german/work/sandbox/projects/code_project/requirements.txt",
+		"/home/german/work/sandbox/projects/code_project/templates/template-andreas08.html~",
+		"/home/german/work/sandbox/projects/code_project/templates/template-andreas08.html",
+		"/home/german/work/sandbox/projects/code_project/media/static_media/styles/soulvision/style.css",
+		"/home/german/work/sandbox/projects/code_project/media/static_media/styles/soulvision/style_wide.css",
 		"/home/german/work/sandbox/projects/tartu/apps/giftery/utils/company.py",
 		"/home/german/work/sandbox/projects/tartu/apps/giftery/admin.py",
 		"/home/german/work/sandbox/projects/tartu/apps/giftery/models.py",
@@ -160,6 +148,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/german/work/sandbox/projects/code_project",
 			"/home/german/work/sandbox/projects/tartu",
 			"/home/german/work/sandbox/projects/tartu/etcs/prod",
 			""
@@ -170,6 +159,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"disqus",
+			"disq",
+			"disqus",
 			"helpdesk",
 			"get_companies_by_tags",
 			"nominal",
@@ -199,91 +191,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "apps/blog/templates/blog/post_detail.html",
-					"settings":
-					{
-						"buffer_size": 1562,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								64,
-								64
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML (Django)/HTML (Django).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "apps/blog/templates/disqus/thread.html",
-					"settings":
-					{
-						"buffer_size": 854,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								739,
-								739
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML (Django)/HTML (Django).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "settings.py",
-					"settings":
-					{
-						"buffer_size": 4177,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								522,
-								522
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -328,6 +237,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"style",
+				"media/static_media/styles/soulvision/style_wide.css"
+			],
 			[
 				"giftery/utils/",
 				"apps/giftery/utils/company.py"
