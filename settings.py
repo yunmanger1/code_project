@@ -155,7 +155,6 @@ INSTALLED_APPS = (
     'work',
     'etcs',
     'insert_above',
-    'disqus',
 )
 
 #LOGIN_URL = '/helpdesk/login/'
