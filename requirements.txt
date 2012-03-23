@@ -14,3 +14,5 @@ PIL
 mysql-python
 simplejson
 django-insert-above
+uwsgi
+supervisor
