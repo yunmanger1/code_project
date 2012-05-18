@@ -70,7 +70,7 @@ STATIC_URL = '/media/static_media/'
 
 STATIC_ROOT = rel('..', '..', 'media', 'code_project', 'static_media')
 
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'x7+2eb0f2zd_to48j11jrrk*j*bm_4k$%w%(%h0_1f-33mdrd*'
