@@ -66,7 +66,7 @@ MEDIA_ROOT = rel('..', '..', 'media', 'code_project')
 
 MEDIA_URL = '/media/'
 
-STATIC_URL = '/static/'
+STATIC_URL = '/media/static_media/'
 
 STATIC_ROOT = rel('..', '..', 'media', 'code_project', 'static_media')
 
